@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import Table from "react-bootstrap/Table";
+import { FRAME_MAX_VALUE } from "../../../utils/scoreCalculatorConst";
 import "./ScoreView.css";
 
 const ScoreView = (props) => {
@@ -12,7 +13,9 @@ const ScoreView = (props) => {
         <tr>
           {headers.map((frame, index) => (
             <th key={`${frame} ${index + 1}`} colSpan={3}>
-              <h4 className="table-header">{`Frame ${frame}`}</h4>
+              {frame <= FRAME_MAX_VALUE ? (
+                <h4 className="table-header">{`Frame ${frame}`}</h4>
+              ) : "---"}
             </th>
           ))}
         </tr>

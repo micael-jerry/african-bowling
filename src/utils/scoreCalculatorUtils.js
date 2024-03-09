@@ -1,7 +1,4 @@
-const FRAME_MAX_VALUE = 5;
-const SPARE_BONUS_NUMBER = 2;
-const STRIKE_BONUS_NUMBER = 3;
-const SPARE_AND_STRIKE_COUNT_BASE = 15;
+import { FRAME_MAX_VALUE, SPARE_AND_STRIKE_COUNT_BASE, SPARE_BONUS_NUMBER, STRIKE_BONUS_NUMBER } from "./scoreCalculatorConst";
 
 const cumulateScore = (scoresCalculateArray) => {
 	for (let i = 1; i < scoresCalculateArray.length; i++) {

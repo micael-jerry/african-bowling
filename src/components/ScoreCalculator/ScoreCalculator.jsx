@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 import AddScoreDialog from "./AddScoreDialog";
 import useScoreStore from "../../store/useScoreStore";
+import ScoreView from "./ScoreView";
 
 const ScoreCalculator = () => {
   const { scores, addOrUpdateScore } = useScoreStore();
@@ -26,13 +27,14 @@ const ScoreCalculator = () => {
       )}
       {Object.keys(scores).length != 0 ? (
         <div>
-          <h2>ScoreCalculator</h2>
+          <h2>Score View</h2>
           <br />
-          <div>{JSON.stringify(scores)}</div>
+          <ScoreView scores={scores}/>
           <Button onClick={() => handleShow()}>Add Scores</Button>
         </div>
       ) : (
         <div>
+          <ScoreView scores={scores}/>
           <h1>The scoreboard is currently empty</h1>
           <Button onClick={() => handleShow()}>Add Scores</Button>
         </div>

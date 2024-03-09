@@ -3,6 +3,9 @@ import MyModal from "../MyModal";
 import Form from "react-bootstrap/Form";
 import { useRef } from "react";
 
+// TODO: ADD VALUDATOR frame input: [1:5]
+// TODO: ADD VALIDATOR pins number input: [number | / | X]
+
 const AddScoreDialog = (props) => {
   const { isVisible, handleSave, handleClose, scores } = props;
 

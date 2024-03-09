@@ -3,7 +3,7 @@ import { Button, Row, Col } from "react-bootstrap";
 import AddScoreDialog from "./AddScoreDialog";
 import useScoreStore from "../../store/useScoreStore";
 import ScoreView from "./ScoreView/ScoreView";
-import { SCORES_TEST, scoresCalculation } from "../../utils/scoreCalculatorUtils";
+import { SCORES_TEST_1, SCORES_TEST_2, scoresCalculation } from "../../utils/scoreCalculatorUtils";
 
 const ScoreCalculator = () => {
   const { scores, addOrUpdateScore, setScores } = useScoreStore();
@@ -18,7 +18,7 @@ const ScoreCalculator = () => {
   };
 
   useEffect(() => {
-    setScores(SCORES_TEST);
+    setScores(SCORES_TEST_2);
   }, []);
 
   const handleCalculateScore = () => {

@@ -11,7 +11,7 @@ const AddScoreDialog = (props) => {
   const pinsNumberRef = useRef(null);
   const handleSaveScores = () => {
     let score = scores[frameNumberRef.current.value];
-    if (!score) score = { 1: 0, 2: 0, 3: 0 };
+    if (!score) score = { 1: null, 2: null, 3: null };
     score = {
       ...score,
       [launchNumberRef.current.value]: parseInt(pinsNumberRef.current.value),

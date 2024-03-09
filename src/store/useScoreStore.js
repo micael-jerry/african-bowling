@@ -3,11 +3,11 @@ import { create } from 'zustand';
 
 const useScoreStore = create((set) => ({
 	scores: {},
-	addScore: (score) =>
+	addOrUpdateScore: (frameNumber, updatedScore) =>
 		set((state) => ({
 			scores: {
 				...state.scores,
-				[Object.keys(state.scores).length + 1]: score,
+				[frameNumber]: updatedScore
 			},
 		})),
 }));

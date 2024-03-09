@@ -4,14 +4,14 @@ import AddScoreDialog from "./AddScoreDialog";
 import useScoreStore from "../../store/useScoreStore";
 
 const ScoreCalculator = () => {
-  const { scores, addScore } = useScoreStore();
-  const [addScoreDialogVisible, setScoreDialogVisible] = useState(false);
+  const { scores, addOrUpdateScore } = useScoreStore();
+  const [addScoreDialogVisible, setAddScoreDialogVisible] = useState(false);
 
-  const handleShow = () => setScoreDialogVisible(true);
-  const handleHide = () => setScoreDialogVisible(false);
-  const handleAddScore = (score) => {
-    addScore(score);
-    setScoreDialogVisible(false);
+  const handleShow = () => setAddScoreDialogVisible(true);
+  const handleHide = () => setAddScoreDialogVisible(false);
+  const handleAddScore = (frameNumber, score) => {
+    addOrUpdateScore(frameNumber, score);
+    setAddScoreDialogVisible(false);
   };
 
   return (
@@ -21,6 +21,7 @@ const ScoreCalculator = () => {
           isVisible={addScoreDialogVisible}
           handleSave={handleAddScore}
           handleClose={handleHide}
+					scores={scores}
         />
       )}
       {Object.keys(scores).length != 0 ? (

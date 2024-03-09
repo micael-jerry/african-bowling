@@ -1,3 +1,8 @@
+const FRAME_MAX_VALUE = 5;
+const SPARE_BONUS_NUMBER = 2;
+const STRIKE_BONUS_NUMBER = 3;
+const SPARE_AND_STRIKE_COUNT_BASE = 15;
+
 const cumulateScore = (scoresCalculateArray) => {
 	for (let i = 1; i < scoresCalculateArray.length; i++) {
 		scoresCalculateArray[i] = scoresCalculateArray[i - 1] + scoresCalculateArray[i];
@@ -9,20 +14,20 @@ export const scoresCalculation = (scores) => {
 	let res = [];
 
 	const scoresKeys = Object.keys(scores);
-	for (let i = 0; i < scoresKeys.length; i++) {
+	for (let i = 0; i < FRAME_MAX_VALUE; i++) {
 		let scoreKey = scoresKeys[i];
 		let scoreValue = Object.values(scores[scoreKey]);
 		if (scoreValue.every((element) => typeof element === 'number')) {
 			res.push(scoreValue.reduce((acc, element) => acc + element, 0));
 		}
 		else {
-			let acc = 15;
+			let acc = SPARE_AND_STRIKE_COUNT_BASE;
 			let j = 0;
 			let bonus;
 			if (scoreValue.includes("/"))
-				bonus = 2;
+				bonus = SPARE_BONUS_NUMBER;
 			else if (scoreValue.includes("X"))
-				bonus = 3;
+				bonus = STRIKE_BONUS_NUMBER;
 			let nextScoreValue = Object.values(scores[scoresKeys[i + 1]]);
 			while (bonus > 0) {
 				acc += nextScoreValue[j];

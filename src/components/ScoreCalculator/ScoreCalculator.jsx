@@ -21,7 +21,7 @@ const ScoreCalculator = () => {
           isVisible={addScoreDialogVisible}
           handleSave={handleAddScore}
           handleClose={handleHide}
-					scores={scores}
+          scores={scores}
         />
       )}
       {Object.keys(scores).length != 0 ? (

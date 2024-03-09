@@ -7,13 +7,15 @@ const AddScoreDialog = (props) => {
   const { isVisible, handleSave, handleClose, scores } = props;
 
   const frameNumberRef = useRef(null);
-	const launchNumberRef = useRef(null);
-	const pinsNumberRef = useRef(null);
+  const launchNumberRef = useRef(null);
+  const pinsNumberRef = useRef(null);
   const handleSaveScores = () => {
-		let score = scores[frameNumberRef.current.value];
-		if (!score)
-			score = {1: 0, 2: 0, 3: 0};
-		score = {...score, [launchNumberRef.current.value]: parseInt(pinsNumberRef.current.value)};
+    let score = scores[frameNumberRef.current.value];
+    if (!score) score = { 1: 0, 2: 0, 3: 0 };
+    score = {
+      ...score,
+      [launchNumberRef.current.value]: parseInt(pinsNumberRef.current.value),
+    };
     handleSave(frameNumberRef.current.value, score);
   };
 
@@ -59,7 +61,7 @@ AddScoreDialog.propTypes = {
   isVisible: PropTypes.bool,
   handleSave: PropTypes.func,
   handleClose: PropTypes.func,
-	scores: PropTypes.object
+  scores: PropTypes.object,
 };
 
 export default AddScoreDialog;

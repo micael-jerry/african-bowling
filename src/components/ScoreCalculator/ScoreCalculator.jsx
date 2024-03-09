@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Button } from "react-bootstrap";
 import AddScoreDialog from "./AddScoreDialog";
+import useScoreStore from "../../store/useScoreStore";
 
 const ScoreCalculator = () => {
-  const [scores, setScores] = useState({});
+  const { scores, addScore } = useScoreStore();
   const [addScoreDialogVisible, setScoreDialogVisible] = useState(false);
 
   const handleShow = () => setScoreDialogVisible(true);
   const handleHide = () => setScoreDialogVisible(false);
-  const handleSaveScores = (score) => {
-    setScores({...scores, score});
+  const handleAddScore = (score) => {
+    addScore(score);
     setScoreDialogVisible(false);
   };
 
@@ -18,13 +19,15 @@ const ScoreCalculator = () => {
       {addScoreDialogVisible && (
         <AddScoreDialog
           isVisible={addScoreDialogVisible}
-          handleSave={handleSaveScores}
+          handleSave={handleAddScore}
           handleClose={handleHide}
         />
       )}
-      {scores.length != 0 ? (
+      {Object.keys(scores).length != 0 ? (
         <div>
-          <div>ScoreCalculator</div>
+          <h2>ScoreCalculator</h2>
+          <br />
+          <div>{JSON.stringify(scores)}</div>
           <Button onClick={() => handleShow()}>Add Scores</Button>
         </div>
       ) : (

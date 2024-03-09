@@ -5,10 +5,15 @@ import { useState } from "react";
 
 const AddScoreDialog = (props) => {
   const { isVisible, handleSave, handleClose } = props;
-	const [score, setScore] = useState({});
+	const [score, setScore] = useState({
+		1: 0,
+		2: 0,
+		3: 0,
+	});
 
 	const handleSaveScores = () => {
 		handleSave(score);
+		setScore({});
 	}
 
   return (

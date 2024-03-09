@@ -3,12 +3,13 @@ import { Button } from "react-bootstrap";
 import AddScoreDialog from "./AddScoreDialog";
 
 const ScoreCalculator = () => {
-  const [scores, setScores] = useState(null);
+  const [scores, setScores] = useState({});
   const [addScoreDialogVisible, setScoreDialogVisible] = useState(false);
 
   const handleShow = () => setScoreDialogVisible(true);
   const handleHide = () => setScoreDialogVisible(false);
-  const handleSave = () => {
+  const handleSaveScores = (score) => {
+    setScores({...scores, score});
     setScoreDialogVisible(false);
   };
 
@@ -17,13 +18,11 @@ const ScoreCalculator = () => {
       {addScoreDialogVisible && (
         <AddScoreDialog
           isVisible={addScoreDialogVisible}
-          handleSave={handleSave}
+          handleSave={handleSaveScores}
           handleClose={handleHide}
-        >
-          <div>Add Score form</div>
-        </AddScoreDialog>
+        />
       )}
-      {scores ? (
+      {scores.length != 0 ? (
         <div>
           <div>ScoreCalculator</div>
           <Button onClick={() => handleShow()}>Add Scores</Button>

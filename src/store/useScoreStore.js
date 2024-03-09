@@ -9,6 +9,9 @@ const useScoreStore = create((set) => ({
         [frameNumber]: updatedScore,
       },
     })),
+  setScores: (newScore) => set(() => ({
+    scores: newScore
+  }))
 }));
 
 export default useScoreStore;

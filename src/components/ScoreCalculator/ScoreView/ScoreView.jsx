@@ -3,7 +3,7 @@ import Table from "react-bootstrap/Table";
 import "./ScoreView.css";
 
 const ScoreView = (props) => {
-  const { scores } = props;
+  const { scores, calculateScoreResult } = props;
 
   const headers = Object.keys(scores);
   return (
@@ -26,12 +26,24 @@ const ScoreView = (props) => {
           )}
         </tr>
       </tbody>
+      {calculateScoreResult && (
+        <tfoot>
+          <tr>
+            {calculateScoreResult.map((res) => (
+              <td key={res} colSpan={3}>
+                {res}
+              </td>
+            ))}
+          </tr>
+        </tfoot>
+      )}
     </Table>
   );
 };
 
 ScoreView.propTypes = {
   scores: PropTypes.object,
+  calculateScoreResult: PropTypes.array,
 };
 
 export default ScoreView;

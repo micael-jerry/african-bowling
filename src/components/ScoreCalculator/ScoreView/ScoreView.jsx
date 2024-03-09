@@ -1,17 +1,18 @@
 import PropTypes from "prop-types";
 import Table from "react-bootstrap/Table";
+import "./ScoreView.css";
 
 const ScoreView = (props) => {
   const { scores } = props;
 
   const headers = Object.keys(scores);
   return (
-    <Table responsive bordered>
+    <Table responsive bordered className="table-score">
       <thead>
         <tr>
           {headers.map((frame, index) => (
             <th key={`${frame} ${index + 1}`} colSpan={3}>
-              {`Frame ${frame}`}
+              <h4 className="table-header">{`Frame ${frame}`}</h4>
             </th>
           ))}
         </tr>

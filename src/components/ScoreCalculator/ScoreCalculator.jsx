@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button, Row, Col } from "react-bootstrap";
 import AddScoreDialog from "./AddScoreDialog";
 import useScoreStore from "../../store/useScoreStore";
 import ScoreView from "./ScoreView/ScoreView";
 import {
-  SCORES_TEST_2,
   scoresCalculation,
 } from "../../utils/scoreCalculatorUtils";
 
 const ScoreCalculator = () => {
-  const { scores, addOrUpdateScore, setScores } = useScoreStore();
+  const { scores, addOrUpdateScore } = useScoreStore();
   const [calculateScoreResult, setCalculateScoreResult] = useState(null);
   const [addScoreDialogVisible, setAddScoreDialogVisible] = useState(false);
 
@@ -20,13 +19,7 @@ const ScoreCalculator = () => {
     setAddScoreDialogVisible(false);
   };
 
-  // TODO: REMOVE TEST CODE
   // TODO: HANDLE ERROR CALCUL
-
-  useEffect(() => {
-    setScores(SCORES_TEST_2);
-  }, []);
-
   const handleCalculateScore = () => {
     setCalculateScoreResult(scoresCalculation(scores));
   };

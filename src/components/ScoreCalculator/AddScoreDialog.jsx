@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import MyModal from "../MyModal";
 import Form from "react-bootstrap/Form";
-import { useRef } from "react";
+import { useEffect, useState } from "react";
 import {
   FRAME_MAX_VALUE,
   LAUNCH_NUMBER_IN_FRAME,
@@ -13,17 +13,17 @@ import {
 const AddScoreDialog = (props) => {
   const { isVisible, handleSave, handleClose, scores } = props;
 
-  const frameNumberRef = useRef(null);
-  const launchNumberRef = useRef(null);
-  const pinsNumberRef = useRef(null);
+  const [frameNumber, setFrameNumber] = useState(0);
+  const [launchNumber, setLaunchNumber] = useState(0);
+  const [pinsNumber, setPinsNumber] = useState("");
   const handleSaveScores = () => {
-    let score = scores[frameNumberRef.current.value];
+    let score = scores[frameNumber];
     if (!score) score = { 1: null, 2: null, 3: null };
     score = {
       ...score,
-      [launchNumberRef.current.value]: parseInt(pinsNumberRef.current.value),
+      [launchNumber]: parseInt(pinsNumber),
     };
-    handleSave(frameNumberRef.current.value, score);
+    handleSave(frameNumber, score);
   };
 
   return (
@@ -33,8 +33,12 @@ const AddScoreDialog = (props) => {
       handleClose={handleClose}
       header={"Add or Update Score"}
     >
-      <Form.Select aria-label="Default select frame" ref={frameNumberRef}>
-        <option value={null}>Frame number</option>
+      <Form.Select
+        aria-label="Default select frame"
+        value={frameNumber}
+        onChange={(event) => setFrameNumber(event.target.value)}
+      >
+        <option value={0}>Frame number</option>
         {Array.from({ length: FRAME_MAX_VALUE }).map((_, index) => (
           <option key={`${index + 1}`} value={index + 1}>
             {index + 1}
@@ -42,7 +46,11 @@ const AddScoreDialog = (props) => {
         ))}
       </Form.Select>
       <br />
-      <Form.Select aria-label="Default select launch" ref={launchNumberRef}>
+      <Form.Select
+        aria-label="Default select launch"
+        value={launchNumber}
+        onChange={(event) => setLaunchNumber(event.target.value)}
+      >
         <option value={null}>Launch number</option>
         {Array.from({ length: LAUNCH_NUMBER_IN_FRAME }).map((_, index) => (
           <option key={`${index + 1}`} value={index + 1}>
@@ -56,7 +64,8 @@ const AddScoreDialog = (props) => {
         type="text"
         id="inputPinsNumber"
         aria-describedby="pinsTextField"
-        ref={pinsNumberRef}
+        value={pinsNumber}
+        onChange={(event) => setPinsNumber(event.target.value)}
       />
       <Form.Text id="inputPinsInfo" muted>
         {"Please don't enter anything"}

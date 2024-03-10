@@ -2,8 +2,9 @@ import PropTypes from "prop-types";
 import MyModal from "../MyModal";
 import Form from "react-bootstrap/Form";
 import { useRef } from "react";
+import { FRAME_MAX_VALUE, LAUNCH_NUMBER_IN_FRAME } from "../../utils/scoreCalculatorConst";
 
-// TODO: ADD VALUDATOR frame input: [1:5]
+// TODO: ADD FORM VALIDATOR
 // TODO: ADD VALIDATOR pins number input: [number | / | X]
 
 const AddScoreDialog = (props) => {
@@ -29,25 +30,23 @@ const AddScoreDialog = (props) => {
       handleClose={handleClose}
       header={"Add or Update Score"}
     >
-      <Form.Label htmlFor="inputFrame">Frame</Form.Label>
-      <Form.Control
-        type="text"
-        id="inputFrame"
-        aria-describedby="frameTextField"
-        ref={frameNumberRef}
-      />
-      <Form.Text id="passwordHelpBlock" muted>
-        {"Please don't enter anything"}
-      </Form.Text>
-      <br />
-      <br />
-      <Form.Select aria-label="Default select example" ref={launchNumberRef}>
-        <option>Launch number</option>
-        <option value={1}>One</option>
-        <option value={2}>Two</option>
-        <option value={3}>Three</option>
+      <Form.Select aria-label="Default select frame" ref={frameNumberRef}>
+        <option value={null} >Frame number</option>
+        {Array.from({ length: FRAME_MAX_VALUE }).map((_, index) => (
+          <option key={`${index + 1}`} value={index + 1}>
+            {index + 1}
+          </option>
+        ))}
       </Form.Select>
       <br />
+      <Form.Select aria-label="Default select launch" ref={launchNumberRef}>
+        <option value={null}>Launch number</option>
+        {Array.from({ length: LAUNCH_NUMBER_IN_FRAME }).map((_, index) => (
+          <option key={`${index + 1}`} value={index + 1}>
+            {index + 1}
+          </option>
+        ))}
+      </Form.Select>
       <br />
       <Form.Label htmlFor="inputPinsNumber">Number of pins touched</Form.Label>
       <Form.Control
@@ -56,6 +55,9 @@ const AddScoreDialog = (props) => {
         aria-describedby="pinsTextField"
         ref={pinsNumberRef}
       />
+      <Form.Text id="inputPinsInfo" muted>
+        {"Please don't enter anything"}
+      </Form.Text>
     </MyModal>
   );
 };

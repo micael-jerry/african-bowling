@@ -30,7 +30,7 @@ const ScoreView = (props) => {
           {headers.map((frame) =>
             Object.values(scores[frame]).map((launchValue, index) => (
               <td key={`${frame}-${index + 1}`}>{launchValue}</td>
-            )),
+            ))
           )}
         </tr>
       </tbody>
@@ -38,7 +38,11 @@ const ScoreView = (props) => {
         <tfoot>
           <tr>
             {calculateScoreResult.map((res) => (
-              <td key={res} colSpan={LAUNCH_NUMBER_IN_FRAME}>
+              <td
+                className="bg-light"
+                key={res}
+                colSpan={LAUNCH_NUMBER_IN_FRAME}
+              >
                 {res}
               </td>
             ))}

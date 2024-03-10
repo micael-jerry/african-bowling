@@ -21,6 +21,8 @@ const ScoreCalculator = () => {
   };
 
   // TODO: REMOVE TEST CODE
+  // TODO: HANDLE ERROR CALCUL
+
   useEffect(() => {
     setScores(SCORES_TEST_2);
   }, []);

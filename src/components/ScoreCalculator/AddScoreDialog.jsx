@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import MyModal from "../MyModal";
 import Form from "react-bootstrap/Form";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   FRAME_MAX_VALUE,
   LAUNCH_NUMBER_IN_FRAME,
@@ -44,6 +44,7 @@ const AddScoreDialog = (props) => {
             {index + 1}
           </option>
         ))}
+        <option value={6}>Additional launch</option>
       </Form.Select>
       <br />
       <Form.Select

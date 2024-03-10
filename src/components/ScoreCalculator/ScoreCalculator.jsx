@@ -4,7 +4,6 @@ import AddScoreDialog from "./AddScoreDialog";
 import useScoreStore from "../../store/useScoreStore";
 import ScoreView from "./ScoreView/ScoreView";
 import {
-  SCORES_TEST_1,
   SCORES_TEST_2,
   scoresCalculation,
 } from "../../utils/scoreCalculatorUtils";
@@ -49,10 +48,17 @@ const ScoreCalculator = () => {
           />
           <Row>
             <Col>
-              <Button onClick={() => handleShow()}>Add Scores</Button>
+              <Button variant="outline-secondary" onClick={() => handleShow()}>
+                Add or Update Scores
+              </Button>
             </Col>
             <Col>
-              <Button onClick={() => handleCalculateScore()}>Calculate</Button>
+              <Button
+                variant="outline-secondary"
+                onClick={() => handleCalculateScore()}
+              >
+                Calculate
+              </Button>
             </Col>
           </Row>
         </div>

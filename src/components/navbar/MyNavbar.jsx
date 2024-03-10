@@ -15,7 +15,12 @@ const MyNavbar = () => {
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end">
-          <Button onClick={() => window.location.reload()}>Reset</Button>
+          <Button
+            variant="outline-secondary"
+            onClick={() => window.location.reload()}
+          >
+            Reset
+          </Button>
         </Navbar.Collapse>
       </Container>
     </Navbar>

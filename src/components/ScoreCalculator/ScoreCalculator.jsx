@@ -20,6 +20,7 @@ const ScoreCalculator = () => {
     setAddScoreDialogVisible(false);
   };
 
+  // TODO: REMOVE TEST CODE
   useEffect(() => {
     setScores(SCORES_TEST_2);
   }, []);

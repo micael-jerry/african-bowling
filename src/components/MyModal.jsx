@@ -6,22 +6,20 @@ const MyModal = (props) => {
   const { isVisible, handleSave, handleClose, header, children } = props;
 
   return (
-    <>
-      <Modal show={isVisible} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>{header}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{children}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleSave}>
-            Save
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+    <Modal show={isVisible} onHide={handleClose}>
+      <Modal.Header closeButton>
+        <Modal.Title>{header}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{children}</Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={handleClose}>
+          Close
+        </Button>
+        <Button variant="primary" onClick={handleSave}>
+          Save
+        </Button>
+      </Modal.Footer>
+    </Modal>
   );
 };
 

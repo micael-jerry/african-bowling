@@ -1,5 +1,6 @@
 import {
   FRAME_MAX_VALUE,
+  LAUNCH_NUMBER_IN_FRAME,
   SPARE_AND_STRIKE_COUNT_BASE,
   SPARE_BONUS_NUMBER,
   STRIKE_BONUS_NUMBER,
@@ -61,6 +62,21 @@ export const scoresCalculation = (scores) => {
     }
   }
   return cumulateScore(res);
+};
+
+export const getErrorAddScore = (frameNumber, launchNumber, pinsNumber) => {
+  frameNumber = parseInt(frameNumber);
+  launchNumber = parseInt(launchNumber);
+  if (frameNumber < 1 || frameNumber > 6) return "Invalid frame number";
+  else if (launchNumber < 1 || launchNumber > LAUNCH_NUMBER_IN_FRAME)
+    return "Invalid launch number";
+  else if (frameNumber === 6 && launchNumber != 1)
+    return "The launch number should be 1";
+  else if (pinsNumber != "/" && pinsNumber != "X" && isNaN(parseInt(pinsNumber)))
+    return "Invalid number of pins";
+  else if (parseInt(pinsNumber) < 0 || parseInt(pinsNumber) > 14)
+    return "Ivalid number of pins";
+  return null;
 };
 
 export const SCORES_TEST_1 = {

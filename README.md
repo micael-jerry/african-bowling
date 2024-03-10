@@ -1,6 +1,8 @@
 # African bowling
 
-This application is a technical test from Code & Scale. It's a point calculation application for an African game similar to bowling, but with different rules.
+This application is a technical test from [Code & Scale](https://codeandscale.com/). It's a point calculation application for an African game similar to bowling, but with different rules.
+
+You can find the project subject with the game rules [here](https://github.com/micael-jerry/african-bowling/blob/master/Test%20technique%20-%20Code%26Scale.docx.pdf).
 
 ## Getting Started
 

@@ -15,7 +15,9 @@ const ScoreView = (props) => {
             <th key={`${frame} ${index + 1}`} colSpan={3}>
               {frame <= FRAME_MAX_VALUE ? (
                 <h4 className="table-header">{`Frame ${frame}`}</h4>
-              ) : "---"}
+              ) : (
+                "---"
+              )}
             </th>
           ))}
         </tr>
@@ -25,7 +27,7 @@ const ScoreView = (props) => {
           {headers.map((frame) =>
             Object.values(scores[frame]).map((launchValue, index) => (
               <td key={`${frame}-${index + 1}`}>{launchValue}</td>
-            ))
+            )),
           )}
         </tr>
       </tbody>

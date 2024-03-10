@@ -13,24 +13,47 @@ const cumulateScore = (scoresCalculateArray) => {
   return scoresCalculateArray;
 };
 
+const getNextLaunchValueArray = (actualFrameNumber, scores) => {
+  let nextLaunchValueArray = [];
+  let launchValueArray = Object.values(scores[actualFrameNumber]);
+  let index =
+    launchValueArray.indexOf("/") > 0 ? launchValueArray.indexOf("/") : 0;
+  for (let i = index + 1; i < launchValueArray.length; i++) {
+    if (launchValueArray[i] != null)
+      nextLaunchValueArray.push(launchValueArray[i]);
+  }
+  const frameNumberArray = Object.keys(scores);
+  for (
+    let i = frameNumberArray.indexOf(actualFrameNumber) + 1;
+    i < frameNumberArray.length;
+    i++
+  ) {
+    const frameNumber = frameNumberArray[i];
+    Object.values(scores[frameNumber]).forEach((launchValue) => {
+      if (launchValue != null) nextLaunchValueArray.push(launchValue);
+    });
+  }
+  return nextLaunchValueArray;
+};
+
 export const scoresCalculation = (scores) => {
   let res = [];
 
-  const scoresKeys = Object.keys(scores);
+  const frameNumberArray = Object.keys(scores);
   for (let i = 0; i < FRAME_MAX_VALUE; i++) {
-    let scoreKey = scoresKeys[i];
-    let scoreValue = Object.values(scores[scoreKey]);
-    if (scoreValue.every((element) => typeof element === "number")) {
-      res.push(scoreValue.reduce((acc, element) => acc + element, 0));
+    let frameNumber = frameNumberArray[i];
+    let launchValueArray = Object.values(scores[frameNumber]);
+    if (launchValueArray.every((element) => typeof element === "number")) {
+      res.push(launchValueArray.reduce((acc, element) => acc + element, 0));
     } else {
       let acc = SPARE_AND_STRIKE_COUNT_BASE;
       let j = 0;
       let bonus;
-      if (scoreValue.includes("/")) bonus = SPARE_BONUS_NUMBER;
-      else if (scoreValue.includes("X")) bonus = STRIKE_BONUS_NUMBER;
-      let nextScoreValue = Object.values(scores[scoresKeys[i + 1]]);
+      if (launchValueArray.includes("/")) bonus = SPARE_BONUS_NUMBER;
+      else if (launchValueArray.includes("X")) bonus = STRIKE_BONUS_NUMBER;
+      let nextLaunchValueArray = getNextLaunchValueArray(frameNumber, scores);
       while (bonus > 0) {
-        acc += nextScoreValue[j];
+        acc += !isNaN(nextLaunchValueArray[j]) ? nextLaunchValueArray[j] : 15;
         j++;
         bonus--;
       }
@@ -48,7 +71,6 @@ export const SCORES_TEST_1 = {
   5: { 1: 1, 2: 2, 3: 1 },
 };
 
-// TODO: Calculate last score
 export const SCORES_TEST_2 = {
   1: { 1: "X", 2: null, 3: null },
   2: { 1: 8, 2: 1, 3: 2 },

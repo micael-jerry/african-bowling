@@ -2,7 +2,10 @@ import PropTypes from "prop-types";
 import MyModal from "../MyModal";
 import Form from "react-bootstrap/Form";
 import { useRef } from "react";
-import { FRAME_MAX_VALUE, LAUNCH_NUMBER_IN_FRAME } from "../../utils/scoreCalculatorConst";
+import {
+  FRAME_MAX_VALUE,
+  LAUNCH_NUMBER_IN_FRAME,
+} from "../../utils/scoreCalculatorConst";
 
 // TODO: ADD FORM VALIDATOR
 // TODO: ADD VALIDATOR pins number input: [number | / | X]
@@ -31,7 +34,7 @@ const AddScoreDialog = (props) => {
       header={"Add or Update Score"}
     >
       <Form.Select aria-label="Default select frame" ref={frameNumberRef}>
-        <option value={null} >Frame number</option>
+        <option value={null}>Frame number</option>
         {Array.from({ length: FRAME_MAX_VALUE }).map((_, index) => (
           <option key={`${index + 1}`} value={index + 1}>
             {index + 1}

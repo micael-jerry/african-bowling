@@ -1,6 +1,9 @@
 import PropTypes from "prop-types";
 import Table from "react-bootstrap/Table";
-import { FRAME_MAX_VALUE, LAUNCH_NUMBER_IN_FRAME } from "../../../utils/scoreCalculatorConst";
+import {
+  FRAME_MAX_VALUE,
+  LAUNCH_NUMBER_IN_FRAME,
+} from "../../../utils/scoreCalculatorConst";
 import "./ScoreView.css";
 
 const ScoreView = (props) => {

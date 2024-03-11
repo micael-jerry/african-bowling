@@ -18,7 +18,7 @@ const getNextLaunchValueArray = (actualFrameNumber, scores) => {
   let nextLaunchValueArray = [];
   let launchValueArray = Object.values(scores[actualFrameNumber]);
   let index =
-    launchValueArray.indexOf("/") > 0 ? launchValueArray.indexOf("/") : 0;
+    launchValueArray.includes("X") ? 0 : launchValueArray.indexOf("/");
   for (let i = index + 1; i < launchValueArray.length; i++) {
     if (launchValueArray[i] != null)
       nextLaunchValueArray.push(launchValueArray[i]);

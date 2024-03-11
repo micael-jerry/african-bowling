@@ -3,9 +3,7 @@ import { Button, Row, Col } from "react-bootstrap";
 import AddScoreDialog from "./AddScoreDialog";
 import useScoreStore from "../../store/useScoreStore";
 import ScoreView from "./ScoreView/ScoreView";
-import {
-  scoresCalculation,
-} from "../../utils/scoreCalculatorUtils";
+import { scoresCalculation } from "../../utils/scoreCalculatorUtils";
 
 const ScoreCalculator = () => {
   const { scores, addOrUpdateScore } = useScoreStore();

@@ -2,7 +2,7 @@
 
 This application is a technical test from [Code & Scale](https://codeandscale.com/). It's a point calculation application for an African game similar to bowling, but with different rules.
 
-You can find the project subject with the game rules [here](https://github.com/micael-jerry/african-bowling/blob/dev/docs/Test%20technique%20-%20Code%26Scale.docx.pdf).
+You can find the project subject with the game rules [here](https://github.com/micael-jerry/african-bowling/blob/master/docs/Test%20technique%20-%20Code%26Scale.docx.pdf).
 
 ## Getting Started
 
@@ -57,8 +57,8 @@ npm run prettify
 ### Step 2
 
 - You must now fill in the form correctly and save it.
-- **NB**: To fill in the additional launch for frame 5, select *`"Additional launch"`* on ***Frame number*** and *`"1"`* on **Launch number**
-![form](./docs/assets/2.png)
+- **NB**: To fill in the additional launch for frame 5, select _`"Additional launch"`_ on **_Frame number_** and _`"1"`_ on **Launch number**
+  ![form](./docs/assets/2.png)
 
 ### Step 3
 

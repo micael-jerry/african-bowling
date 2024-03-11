@@ -18,7 +18,7 @@ const getNextLaunchValueArray = (actualFrameNumber, scores) => {
   let nextLaunchValueArray = [];
   let launchValueArray = Object.values(scores[actualFrameNumber]);
   let index =
-    launchValueArray.indexOf("/") > 0 ? launchValueArray.indexOf("/") : 0;
+    launchValueArray.includes("X") ? 0 : launchValueArray.indexOf("/");
   for (let i = index + 1; i < launchValueArray.length; i++) {
     if (launchValueArray[i] != null)
       nextLaunchValueArray.push(launchValueArray[i]);
@@ -73,8 +73,8 @@ export const getErrorAddScore = (frameNumber, launchNumber, pinsNumber) => {
   else if (frameNumber === 6 && launchNumber != 1)
     return "The launch number should be 1";
   else if (pinsNumber != "/" && pinsNumber != "X" && isNaN(parseInt(pinsNumber)))
-    return "Invalid number of pins";
+    return "Invalid number of pins (possible value: / or X or 0 -> 14)";
   else if (parseInt(pinsNumber) < 0 || parseInt(pinsNumber) > 14)
-    return "Ivalid number of pins";
+    return "Invalid number of pins (possible value: / or X or 0 -> 14)";
   return null;
 };

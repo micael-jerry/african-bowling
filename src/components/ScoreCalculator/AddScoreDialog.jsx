@@ -19,7 +19,7 @@ const AddScoreDialog = (props) => {
     const error = getErrorAddScore(
       frameNumberRef.current.value,
       launchNumberRef.current.value,
-      pinsNumberRef.current.value,
+      pinsNumberRef.current.value
     );
     if (error != null) {
       setValidation(error);
@@ -29,7 +29,11 @@ const AddScoreDialog = (props) => {
     if (!score) score = { 1: null, 2: null, 3: null };
     score = {
       ...score,
-      [launchNumberRef.current.value]: parseInt(pinsNumberRef.current.value),
+      [launchNumberRef.current.value]: isNaN(
+        parseInt(pinsNumberRef.current.value)
+      )
+        ? pinsNumberRef.current.value
+        : parseInt(pinsNumberRef.current.value),
     };
     handleSave(frameNumberRef.current.value, score);
   };
